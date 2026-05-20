@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elevate Skin Lab | North Vancouver</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cream: #F7F0E8;
+    --warm-white: #FDFAF6;
+    --sand: #E8D9C8;
+    --taupe: #C4A882;
+    --charcoal: #2A2520;
+    --dark: #1A1714;
+    --accent: #8B6F52;
+    --muted: #8A7D72;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Jost', sans-serif; background: var(--warm-white); color: var(--charcoal); overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    padding: 24px 60px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(253, 250, 246, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(196, 168, 130, 0.2);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 300; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--charcoal);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 40px; list-style: none; }
+  .nav-links a {
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none; font-weight: 400;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--charcoal); }
+  .nav-book {
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    background: var(--charcoal); color: var(--warm-white);
+    padding: 12px 28px; text-decoration: none;
+    font-weight: 400; transition: background 0.3s;
+  }
+  .nav-book:hover { background: var(--accent); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    padding-top: 88px;
+    background: var(--warm-white);
+  }
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 60px 80px 80px;
+  }
+  .hero-eyebrow {
+    font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--taupe); margin-bottom: 28px; font-weight: 400;
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 6vw, 80px);
+    font-weight: 300; line-height: 1.05;
+    color: var(--dark); margin-bottom: 32px;
+  }
+  .hero-title em { font-style: italic; color: var(--accent); }
+  .hero-body {
+    font-size: 15px; line-height: 1.8; color: var(--muted);
+    max-width: 420px; font-weight: 300; margin-bottom: 48px;
+  }
+  .hero-cta {
+    display: flex; gap: 16px; align-items: center;
+  }
+  .btn-primary {
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    background: var(--charcoal); color: var(--warm-white);
+    padding: 16px 36px; text-decoration: none; font-weight: 400;
+    transition: background 0.3s;
+  }
+  .btn-primary:hover { background: var(--accent); }
+  .btn-ghost {
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--charcoal); text-decoration: none; font-weight: 400;
+    border-bottom: 1px solid var(--taupe); padding-bottom: 2px;
+  }
+  .hero-right {
+    position: relative; overflow: hidden;
+    background: var(--sand);
+  }
+  .hero-img {
+    width: 100%; height: 100%; object-fit: cover;
+    display: block;
+  }
+  .hero-img-placeholder {
+    width: 100%; height: 100%; min-height: 100vh;
+    background: linear-gradient(160deg, #E8D9C8 0%, #D4C0A8 40%, #C4A882 100%);
+    display: flex; align-items: flex-end; padding: 48px;
+  }
+  .hero-img-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px; letter-spacing: 0.15em; color: rgba(42,37,32,0.4);
+    text-transform: uppercase;
+  }
+  .hero-stat-bar {
+    position: absolute; bottom: 40px; left: -1px;
+    background: var(--warm-white); padding: 28px 36px;
+    display: flex; gap: 40px;
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px; font-weight: 300; color: var(--dark); display: block;
+  }
+  .stat-label {
+    font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--muted); display: block; margin-top: 4px;
+  }
+
+  /* MARQUEE STRIP */
+  .marquee-strip {
+    background: var(--charcoal); color: var(--cream);
+    padding: 18px 0; overflow: hidden;
+  }
+  .marquee-inner {
+    display: flex; gap: 0; white-space: nowrap;
+    animation: marquee 22s linear infinite;
+  }
+  .marquee-item {
+    font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
+    padding: 0 40px; font-weight: 300; flex-shrink: 0;
+    color: rgba(247,240,232,0.7);
+  }
+  .marquee-dot { color: var(--taupe); }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* INTRO */
+  .intro {
+    padding: 120px 80px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    background: var(--warm-white);
+  }
+  .intro-image {
+    aspect-ratio: 4/5;
+    background: linear-gradient(135deg, #EDE0D0 0%, #D8C4AD 100%);
+    position: relative; overflow: hidden;
+  }
+  .intro-image::after {
+    content: '';
+    position: absolute; bottom: -1px; right: -1px;
+    width: 60%; height: 40%;
+    background: var(--warm-white);
+    clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  }
+  .intro-image-inner {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .intro-image-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 60px; font-weight: 300; color: rgba(42,37,32,0.12);
+    line-height: 1; text-align: center;
+  }
+  .intro-right {}
+  .section-label {
+    font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--taupe); margin-bottom: 24px; display: block;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 52px); font-weight: 300;
+    line-height: 1.15; color: var(--dark); margin-bottom: 28px;
+  }
+  .section-title em { font-style: italic; }
+  .section-body {
+    font-size: 15px; line-height: 1.9; color: var(--muted);
+    font-weight: 300; margin-bottom: 40px;
+  }
+  .divider { width: 48px; height: 1px; background: var(--taupe); margin-bottom: 40px; }
+
+  /* SERVICES */
+  .services {
+    background: var(--cream);
+    padding: 120px 80px;
+  }
+  .services-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 72px;
+  }
+  .services-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+  }
+  .service-card {
+    background: var(--warm-white); padding: 48px 40px;
+    transition: background 0.3s; cursor: default;
+    position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute; bottom: 0; left: 0;
+    width: 100%; height: 3px;
+    background: var(--taupe);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  .service-card:hover { background: var(--charcoal); }
+  .service-card:hover .service-num,
+  .service-card:hover .service-name,
+  .service-card:hover .service-desc { color: var(--cream); }
+  .service-card:hover .service-tag { border-color: rgba(247,240,232,0.2); color: rgba(247,240,232,0.5); }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px; color: var(--taupe);
+    letter-spacing: 0.1em; display: block; margin-bottom: 24px;
+    transition: color 0.3s;
+  }
+  .service-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; font-weight: 300; color: var(--dark);
+    line-height: 1.2; margin-bottom: 16px;
+    transition: color 0.3s;
+  }
+  .service-desc {
+    font-size: 13px; line-height: 1.8; color: var(--muted);
+    font-weight: 300; margin-bottom: 28px;
+    transition: color 0.3s;
+  }
+  .service-tag {
+    font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase;
+    border: 1px solid var(--sand); color: var(--muted);
+    padding: 6px 14px; display: inline-block;
+    transition: all 0.3s;
+  }
+
+  /* PROCESS */
+  .process {
+    padding: 120px 80px;
+    background: var(--warm-white);
+  }
+  .process-header { text-align: center; margin-bottom: 80px; }
+  .process-steps {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px;
+    position: relative;
+  }
+  .process-steps::before {
+    content: '';
+    position: absolute; top: 28px; left: 12.5%; right: 12.5%;
+    height: 1px; background: var(--sand);
+  }
+  .process-step { text-align: center; }
+  .step-circle {
+    width: 56px; height: 56px; border-radius: 50%;
+    border: 1px solid var(--taupe);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 28px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; color: var(--accent);
+    background: var(--warm-white);
+    position: relative; z-index: 1;
+  }
+  .step-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 400; color: var(--dark);
+    margin-bottom: 12px;
+  }
+  .step-desc {
+    font-size: 13px; line-height: 1.8; color: var(--muted); font-weight: 300;
+  }
+
+  /* TESTIMONIALS */
+  .testimonials {
+    background: var(--charcoal); padding: 120px 80px;
+    color: var(--cream);
+  }
+  .testimonials-header { text-align: center; margin-bottom: 72px; }
+  .testimonials-header .section-label { color: var(--taupe); }
+  .testimonials-header .section-title { color: var(--cream); }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .testimonial-card {
+    border: 1px solid rgba(196,168,130,0.2);
+    padding: 40px; position: relative;
+  }
+  .quote-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 72px; line-height: 0.5;
+    color: var(--taupe); opacity: 0.4;
+    display: block; margin-bottom: 24px;
+  }
+  .testimonial-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; font-style: italic; line-height: 1.7;
+    color: rgba(247,240,232,0.85); margin-bottom: 32px;
+  }
+  .testimonial-author {
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--taupe);
+  }
+  .stars { color: var(--taupe); font-size: 12px; margin-bottom: 16px; letter-spacing: 2px; }
+
+  /* BOOKING CTA */
+  .booking {
+    background: var(--cream); padding: 120px 80px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  }
+  .booking-left {}
+  .booking-right {
+    background: var(--warm-white); padding: 56px;
+  }
+  .booking-form { display: flex; flex-direction: column; gap: 20px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 8px; }
+  .form-label {
+    font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--muted);
+  }
+  .form-input {
+    border: none; border-bottom: 1px solid var(--sand);
+    padding: 12px 0; font-family: 'Jost', sans-serif;
+    font-size: 14px; color: var(--charcoal);
+    background: transparent; outline: none;
+    transition: border-color 0.3s;
+  }
+  .form-input:focus { border-color: var(--taupe); }
+  .form-select {
+    border: none; border-bottom: 1px solid var(--sand);
+    padding: 12px 0; font-family: 'Jost', sans-serif;
+    font-size: 14px; color: var(--charcoal);
+    background: transparent; outline: none; appearance: none;
+    cursor: pointer;
+  }
+  .btn-submit {
+    background: var(--charcoal); color: var(--cream);
+    border: none; padding: 18px;
+    font-family: 'Jost', sans-serif;
+    font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
+    cursor: pointer; margin-top: 8px; transition: background 0.3s;
+  }
+  .btn-submit:hover { background: var(--accent); }
+  .booking-info { display: flex; flex-direction: column; gap: 24px; margin-top: 40px; }
+  .info-item { display: flex; gap: 16px; align-items: flex-start; }
+  .info-icon {
+    width: 40px; height: 40px; border: 1px solid var(--sand);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; font-size: 16px;
+  }
+  .info-text {}
+  .info-label {
+    font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--taupe); margin-bottom: 4px;
+  }
+  .info-value { font-size: 14px; color: var(--charcoal); font-weight: 300; }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark); color: var(--cream);
+    padding: 72px 80px 40px;
+  }
+  .footer-top {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px;
+    padding-bottom: 56px; border-bottom: 1px solid rgba(196,168,130,0.15);
+    margin-bottom: 40px;
+  }
+  .footer-brand {}
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 300; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--cream);
+    display: block; margin-bottom: 20px;
+  }
+  .footer-tagline {
+    font-size: 13px; line-height: 1.8; color: rgba(247,240,232,0.5);
+    font-weight: 300; max-width: 260px;
+  }
+  .footer-col-title {
+    font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--taupe); margin-bottom: 24px;
+  }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .footer-links a {
+    font-size: 13px; color: rgba(247,240,232,0.5); text-decoration: none;
+    font-weight: 300; transition: color 0.3s;
+  }
+  .footer-links a:hover { color: var(--cream); }
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-copy { font-size: 11px; color: rgba(247,240,232,0.3); }
+  .footer-social { display: flex; gap: 20px; }
+  .social-link {
+    font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(247,240,232,0.4); text-decoration: none; transition: color 0.3s;
+  }
+  .social-link:hover { color: var(--taupe); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Elevate Skin Lab</a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#results">Results</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#booking" class="nav-book">Book Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <span class="hero-eyebrow">North Vancouver · Est. 2022</span>
+    <h1 class="hero-title">Skin that <em>glows</em><br>from within</h1>
+    <p class="hero-body">Advanced clinical treatments tailored to your unique skin — delivered with a warm, personal touch in the heart of North Vancouver.</p>
+    <div class="hero-cta">
+      <a href="#booking" class="btn-primary">Book a Treatment</a>
+      <a href="#services" class="btn-ghost">View Services</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-placeholder">
+      <span class="hero-img-label">Your photo here</span>
+    </div>
+    <div class="hero-stat-bar">
+      <div class="stat">
+        <span class="stat-num">500+</span>
+        <span class="stat-label">Happy Clients</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">5★</span>
+        <span class="stat-label">Avg. Rating</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">8+</span>
+        <span class="stat-label">Treatments</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-inner">
+    <span class="marquee-item">Microneedling <span class="marquee-dot">·</span></span>
+    <span class="marquee-item">Chemical Peels <span class="marquee-dot">·</span></span>
+    <span class="marquee-item">Dermaplaning <span class="marquee-dot">·</span></span>
+    <span class="marquee-item">Toxin Treatments <span class="marquee-dot">·</span></span>
+    <span class="marquee-item">Wellness Injections <span class="marquee-dot">·</span></span>
+    <span class="marquee-item">Custom Facials <span class="marquee-dot">·</span></span>
+    <span class="marquee-item">Skin Consultations <span class="marquee-dot">·</span></span>
+    <span class="marquee-item">North Vancouver <span class="marquee-dot">·</span></span>
+    <span class="marquee-item">Microneedling <span class="marquee-dot">·</span></span>
+    <span class="marquee-item">Chemical Peels <span class="marquee-dot">·</span></span>
+    <span class="marquee-item">Dermaplaning <span class="marquee-dot">·</span></span>
+    <span class="marquee-item">Toxin Treatments <span class="marquee-dot">·</span></span>
+    <span class="marquee-item">Wellness Injections <span class="marquee-dot">·</span></span>
+    <span class="marquee-item">Custom Facials <span class="marquee-dot">·</span></span>
+    <span class="marquee-item">Skin Consultations <span class="marquee-dot">·</span></span>
+    <span class="marquee-item">North Vancouver <span class="marquee-dot">·</span></span>
+  </div>
+</div>
+
+<!-- INTRO / ABOUT -->
+<section class="intro" id="about">
+  <div class="intro-image">
+    <div class="intro-image-inner">
+      <div class="intro-image-text">ESL</div>
+    </div>
+  </div>
+  <div class="intro-right">
+    <span class="section-label">About Olga</span>
+    <h2 class="section-title">Science-backed<br>skin care, <em>elevated</em></h2>
+    <div class="divider"></div>
+    <p class="section-body">With a passion for skin health and a clinical approach to aesthetics, I bring advanced treatments to a warm, boutique studio environment. Every service is customized — because no two complexions are the same.</p>
+    <p class="section-body">I believe great skin isn't a luxury. It's achievable with the right treatments, the right products, and a practitioner who genuinely cares.</p>
+    <a href="#booking" class="btn-primary">Meet Olga &amp; Book</a>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-header">
+    <div>
+      <span class="section-label">What We Offer</span>
+      <h2 class="section-title">Our <em>treatments</em></h2>
+    </div>
+    <a href="#booking" class="btn-ghost">View all services →</a>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="service-num">01</span>
+      <h3 class="service-name">Microneedling</h3>
+      <p class="service-desc">FDA-cleared SkinPen microneedling to stimulate collagen and address acne scarring, fine lines, texture, and tone.</p>
+      <span class="service-tag">From $250</span>
+    </div>
+    <div class="service-card">
+      <span class="service-num">02</span>
+      <h3 class="service-name">Chemical Peels</h3>
+      <p class="service-desc">Medical-grade peels that penetrate medium to deep to combat aging, enhance collagen stimulation and cell turnover.</p>
+      <span class="service-tag">From $150</span>
+    </div>
+    <div class="service-card">
+      <span class="service-num">03</span>
+      <h3 class="service-name">Dermaplaning</h3>
+      <p class="service-desc">Precise exfoliation removing dead skin cells and peach fuzz, opening pores for deeper product absorption.</p>
+      <span class="service-tag">From $120</span>
+    </div>
+    <div class="service-card">
+      <span class="service-num">04</span>
+      <h3 class="service-name">Toxin Treatments</h3>
+      <p class="service-desc">Targeted injections for frown lines, wrinkles, jaw slimming, and teeth-grinding relief. Natural, refreshed results.</p>
+      <span class="service-tag">From $10/unit</span>
+    </div>
+    <div class="service-card">
+      <span class="service-num">05</span>
+      <h3 class="service-name">Wellness Injections</h3>
+      <p class="service-desc">Biotin injections to support hair growth, prevent loss, and promote skin and nail health from within.</p>
+      <span class="service-tag">From $80</span>
+    </div>
+    <div class="service-card">
+      <span class="service-num">06</span>
+      <h3 class="service-name">Custom Facials</h3>
+      <p class="service-desc">Personalized facial treatments designed around your skin's unique needs — relaxing, restorative, and results-driven.</p>
+      <span class="service-tag">From $130</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <div class="process-header">
+    <span class="section-label">How It Works</span>
+    <h2 class="section-title">Your path to <em>better skin</em></h2>
+  </div>
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-circle">1</div>
+      <h3 class="step-title">Consultation</h3>
+      <p class="step-desc">We assess your skin, discuss your concerns and goals, and design a personalized treatment plan.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-circle">2</div>
+      <h3 class="step-title">Treatment</h3>
+      <p class="step-desc">Your chosen treatment is performed with clinical precision in a relaxing, boutique environment.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-circle">3</div>
+      <h3 class="step-title">Aftercare</h3>
+      <p class="step-desc">You receive a tailored aftercare plan and product recommendations to maximize your results.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-circle">4</div>
+      <h3 class="step-title">Results</h3>
+      <p class="step-desc">Watch your skin transform. We track progress and adjust your plan as your skin evolves.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="testimonials-header">
+    <span class="section-label">Client Love</span>
+    <h2 class="section-title">What our clients say</h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <span class="stars">★★★★★</span>
+      <span class="quote-mark">"</span>
+      <p class="testimonial-text">Olga is incredibly knowledgeable. My skin has never looked better — the microneedling series completely transformed my texture and scars.</p>
+      <span class="testimonial-author">— Sarah M., North Vancouver</span>
+    </div>
+    <div class="testimonial-card">
+      <span class="stars">★★★★★</span>
+      <span class="quote-mark">"</span>
+      <p class="testimonial-text">Such a welcoming space. I felt comfortable and cared for the whole time. The chemical peel results were visible within days.</p>
+      <span class="testimonial-author">— Jessica T., Vancouver</span>
+    </div>
+    <div class="testimonial-card">
+      <span class="stars">★★★★★</span>
+      <span class="quote-mark">"</span>
+      <p class="testimonial-text">I've been to many clinics and Elevate is the best. Olga takes the time to truly understand your skin. Worth every penny.</p>
+      <span class="testimonial-author">— Natalie K., West Vancouver</span>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="booking" id="booking">
+  <div class="booking-left">
+    <span class="section-label">Ready to Begin?</span>
+    <h2 class="section-title">Book your<br><em>consultation</em></h2>
+    <div class="divider"></div>
+    <p class="section-body">Your first consultation is complimentary. We'll assess your skin, answer every question, and build a plan that actually works for you.</p>
+    <div class="booking-info">
+      <div class="info-item">
+        <div class="info-icon">📍</div>
+        <div class="info-text">
+          <div class="info-label">Location</div>
+          <div class="info-value">North Vancouver, BC</div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">🕐</div>
+        <div class="info-text">
+          <div class="info-label">Hours</div>
+          <div class="info-value">Tue–Sat: 10am – 7pm</div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">📸</div>
+        <div class="info-text">
+          <div class="info-label">Instagram</div>
+          <div class="info-value">@elevateskin.lab</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="booking-right">
+    <form class="booking-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">First Name</label>
+          <input class="form-input" type="text" placeholder="Emma">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Last Name</label>
+          <input class="form-input" type="text" placeholder="Wilson">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input class="form-input" type="email" placeholder="emma@email.com">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Phone</label>
+        <input class="form-input" type="tel" placeholder="+1 (604) 000-0000">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Treatment of Interest</label>
+        <select class="form-select">
+          <option>Microneedling</option>
+          <option>Chemical Peel</option>
+          <option>Dermaplaning</option>
+          <option>Toxin Treatment</option>
+          <option>Wellness Injection</option>
+          <option>Custom Facial</option>
+          <option>Not sure — book a consult</option>
+        </select>
+      </div>
+      <button type="submit" class="btn-submit">Request Appointment</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="footer-logo">Elevate Skin Lab</span>
+      <p class="footer-tagline">Advanced clinical skin treatments in a warm, boutique studio. North Vancouver, BC.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Treatments</div>
+      <ul class="footer-links">
+        <li><a href="#">Microneedling</a></li>
+        <li><a href="#">Chemical Peels</a></li>
+        <li><a href="#">Dermaplaning</a></li>
+        <li><a href="#">Toxin Treatments</a></li>
+        <li><a href="#">Wellness Injections</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Studio</div>
+      <ul class="footer-links">
+        <li><a href="#">About Olga</a></li>
+        <li><a href="#">Before & After</a></li>
+        <li><a href="#">Client Reviews</a></li>
+        <li><a href="#">Gift Cards</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <ul class="footer-links">
+        <li><a href="#">Book Online</a></li>
+        <li><a href="#">North Vancouver, BC</a></li>
+        <li><a href="#">@elevateskin.lab</a></li>
+        <li><a href="#">hello@elevateskinlab.ca</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2025 Elevate Skin Lab. All rights reserved.</span>
+    <div class="footer-social">
+      <a href="#" class="social-link">Instagram</a>
+      <a href="#" class="social-link">Facebook</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
