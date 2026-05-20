@@ -352,3 +352,53 @@ footer { background: var(--dark); color: var(--cream); padding: 72px 80px 40px; 
   color: rgba(247,240,232,0.4); text-decoration: none; transition: color 0.3s;
 }
 .social-link:hover { color: var(--taupe); }
+
+/* ── MOBILE ─────────────────────────────────────────────── */
+@media (max-width: 768px) {
+
+  /* NAV */
+  nav { padding: 20px 24px; }
+  .nav-links { display: none; }
+  .nav-book { padding: 10px 20px; }
+
+  /* HERO */
+  .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 72px; }
+  .hero-left { padding: 56px 24px 48px; }
+  .hero-title { font-size: clamp(44px, 11vw, 64px); }
+  .hero-body { font-size: 14px; margin-bottom: 36px; }
+  .hero-cta { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .hero-right { display: none; }
+
+  /* MARQUEE */
+  .marquee-item { padding: 0 24px; }
+
+  /* INTRO */
+  .intro { grid-template-columns: 1fr; gap: 40px; padding: 72px 24px; }
+  .intro-image { display: none; }
+
+  /* SERVICES */
+  .services { padding: 72px 24px; }
+  .services-header { flex-direction: column; align-items: flex-start; gap: 16px; margin-bottom: 40px; }
+  .services-grid { grid-template-columns: 1fr; }
+  .service-card { padding: 36px 28px; }
+
+  /* PROCESS */
+  .process { padding: 72px 24px; }
+  .process-steps { grid-template-columns: 1fr 1fr; gap: 36px; }
+  .process-steps::before { display: none; }
+
+  /* TESTIMONIALS */
+  .testimonials { padding: 72px 24px; }
+  .testimonials-grid { grid-template-columns: 1fr; gap: 20px; }
+  .testimonial-card { padding: 32px 28px; }
+
+  /* BOOKING */
+  .booking { grid-template-columns: 1fr; gap: 48px; padding: 72px 24px; }
+  .booking-right { padding: 36px 28px; }
+  .form-row { grid-template-columns: 1fr; }
+
+  /* FOOTER */
+  footer { padding: 56px 24px 32px; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+}
